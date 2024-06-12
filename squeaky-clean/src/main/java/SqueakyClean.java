@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.stream.IntStream;
 
 class SqueakyClean {
     static String clean(String identifier) {
@@ -7,8 +8,7 @@ class SqueakyClean {
         }
         char[] charArray = identifier.toCharArray();
         StringBuilder newString = new StringBuilder();
-        for (int i = 0; i < charArray.length; i++) {
-
+        IntStream.range(0, charArray.length).forEach(i -> {
             if (charArray[i] == ' ') {
                 newString.append("_");
             } else if (charArray[i] == '-') {
@@ -26,8 +26,7 @@ class SqueakyClean {
             } else if (Character.isAlphabetic(charArray[i])) {
                 newString.append(charArray[i]);
             }
-
-        }
+        });
 
         return newString.toString().trim();
     }
